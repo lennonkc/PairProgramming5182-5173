@@ -362,10 +362,6 @@ class Judge:
         print("Wrong: ", len(e_sum), e_sum)
 
 
-# options.Numbers, options.Range = 10000, 100
-# options.ProExFile = "312"
-options.AnsFile = "StandExercises.txt"
-
 if options.Numbers and options.Range and options.ProExFile:
     '生成Numbers条有负数结果的算式, 再将其标准化(去除中间过程有负数结果的算式以及/后面有0的非法算式), 输出文件是StandExercises.txt'
     fileE = Genera(options.Numbers, options.Range)
