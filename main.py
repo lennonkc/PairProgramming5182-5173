@@ -89,12 +89,9 @@ class Genera:
         Numbers = self.numbers
         ' 生成多个Formula并写入文档 '
         file = open("Exercises.txt", 'a+')
-        out = ""
         for i in range(1, Numbers + 1):
-            out = out + self.GeneralOneFormula() + '\n'
-        print(out, file=file)
+            print(str(self.GeneralOneFormula()), file=file)
         file.close()
-
 
 class Answer:
     '这是用于生成任何题目文件的结果到Answers.txt中的类'
@@ -133,8 +130,9 @@ class Answer:
             formula = formula.replace('(', '')
             formula = formula.replace(')', '')
         formula = re.sub('[^.()/*÷\-+0-9]', "", formula)  # 清除非算式符号
-        if (formula[1] == '.'):
-            formula = formula.replace(formula[0:2], '')  # 计算含有题目序列号的标准算式
+        a = formula.find('.')
+        if (a != -1):
+            formula = formula.replace(formula[0:a+1], '')  # 计算含有题目序列号的标准算式
         has_parenthesise = formula.count('(')
         while has_parenthesise:
             sub_parenthesise = re.search('\([^()]*\)', formula)  # 匹配最内层括号
